@@ -1,0 +1,25 @@
+﻿/* Scoped layout styles - main theming is in site.css */
+
+a {
+  color: var(--tn-accent, #13678a);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--tn-primary-light, #134074);
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #134074;
+  border-color: #0b2545;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #134074;
+  border-color: #0b2545;
+}
+  background-color: #134074;
+  border-color: #0b2545;
+}

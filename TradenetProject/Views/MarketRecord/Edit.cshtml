@@ -1,0 +1,69 @@
+@model TradeNetProject.Models.MarketRecord
+
+@{
+    ViewData["Title"] = "Edit Market Record";
+}
+
+<div class="page-header">
+    <div class="breadcrumb-custom">
+        <a asp-controller="Home" asp-action="Index">Home</a>
+        <span class="separator">/</span>
+        <a asp-controller="MarketRecord" asp-action="Index">Markets</a>
+        <span class="separator">/</span>
+        <span>Edit #@Model.RecordID</span>
+    </div>
+    <h2><i class="bi bi-pencil-square me-2"></i>Edit Market Record</h2>
+    <p>Modify market record details.</p>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header bg-white py-3">
+                <h5 class="mb-0 fw-bold"><i class="bi bi-shop me-2 text-primary"></i>Market Details</h5>
+            </div>
+            <div class="card-body p-4">
+                <form method="post" asp-controller="MarketRecord" asp-action="Edit">
+                    <input type="hidden" name="RecordID" value="@Model.RecordID" />
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Market Name</label>
+                        <input type="text" name="MarketName" class="form-control" value="@Model.MarketName" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Location</label>
+                        <input type="text" name="Location" class="form-control" value="@Model.Location" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Total Vendors</label>
+                        <input type="number" name="TotalVendors" class="form-control" value="@Model.TotalVendors" min="0" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Category</label>
+                        <select name="Category" class="form-select" required>
+                            <option value="Wholesale" selected="@(Model.Category == "Wholesale")">Wholesale</option>
+                            <option value="Retail" selected="@(Model.Category == "Retail")">Retail</option>
+                            <option value="Import" selected="@(Model.Category == "Import")">Import</option>
+                            <option value="Export" selected="@(Model.Category == "Export")">Export</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Revenue ($)</label>
+                        <input type="number" name="Revenue" class="form-control" value="@Model.Revenue" step="0.01" min="0" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Status</label>
+                        <select name="Status" class="form-select">
+                            <option value="Active" selected="@(Model.Status == "Active")">Active</option>
+                            <option value="Inactive" selected="@(Model.Status == "Inactive")">Inactive</option>
+                            <option value="Under Review" selected="@(Model.Status == "Under Review")">Under Review</option>
+                        </select>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-tn-primary"><i class="bi bi-check-circle me-1"></i> Save Changes</button>
+                        <a asp-controller="MarketRecord" asp-action="Index" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i> Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

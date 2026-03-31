@@ -1,0 +1,136 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<!-- Hero Section -->
+<div class="hero-section">
+    <div class="hero-content">
+        <h1 class="hero-title">
+            <i class="bi bi-globe-americas me-2"></i>TradeNet Portal
+        </h1>
+        <p class="hero-subtitle">
+            The official government platform for trade licensing, compliance management,
+            and transaction monitoring.
+        </p>
+        <div class="d-flex flex-wrap gap-3 justify-content-center mt-4">
+            <a asp-controller="TradeOfficer" asp-action="Dashboard" class="btn btn-hero-primary">
+                <i class="bi bi-speedometer2 me-2"></i>Go to Dashboard
+            </a>
+            <a asp-controller="License" asp-action="PendingLicenses" class="btn btn-hero-outline">
+                <i class="bi bi-file-earmark-check me-2"></i>Review Licenses
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Services Section -->
+<div class="mt-5 mb-4">
+    <h3 class="section-heading text-center">
+        <span><i class="bi bi-grid me-2"></i>Portal Services</span>
+    </h3>
+</div>
+
+<div class="row g-4 mb-5">
+    <div class="col-md-4">
+        <div class="card service-card h-100 text-center">
+            <div class="card-body p-4">
+                <div class="service-icon bg-primary-subtle text-primary">
+                    <i class="bi bi-file-earmark-check"></i>
+                </div>
+                <h5 class="fw-bold mt-3">License Management</h5>
+                <p class="text-muted small">
+                    Submit, review, and process trade license applications. Track approval
+                    status and manage compliance requirements.
+                </p>
+                <a asp-controller="License" asp-action="PendingLicenses" class="btn btn-sm btn-tn-primary mt-2">
+                    <i class="bi bi-arrow-right me-1"></i>View Licenses
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card service-card h-100 text-center">
+            <div class="card-body p-4">
+                <div class="service-icon bg-warning-subtle text-warning">
+                    <i class="bi bi-receipt"></i>
+                </div>
+                <h5 class="fw-bold mt-3">Transaction Monitoring</h5>
+                <p class="text-muted small">
+                    Access the complete transaction log, review payment history, and track
+                    financial activity across registered businesses.
+                </p>
+                <a asp-controller="Transaction" asp-action="Index" class="btn btn-sm btn-tn-primary mt-2">
+                    <i class="bi bi-arrow-right me-1"></i>View Transactions
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card service-card h-100 text-center">
+            <div class="card-body p-4">
+                <div class="service-icon bg-success-subtle text-success">
+                    <i class="bi bi-file-earmark-medical"></i>
+                </div>
+                <h5 class="fw-bold mt-3">Document Verification</h5>
+                <p class="text-muted small">
+                    Verify trade certificates, tax clearances, and business documents
+                    submitted for compliance and licensing review.
+                </p>
+                <a asp-controller="Document" asp-action="Index" class="btn btn-sm btn-tn-primary mt-2">
+                    <i class="bi bi-arrow-right me-1"></i>Verify Documents
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card service-card h-100 text-center">
+            <div class="card-body p-4">
+                <div class="service-icon bg-info-subtle text-info">
+                    <i class="bi bi-shop"></i>
+                </div>
+                <h5 class="fw-bold mt-3">Market Records</h5>
+                <p class="text-muted small">
+                    Browse registered trade markets, view vendor statistics, revenue
+                    reports, and market category breakdowns.
+                </p>
+                <a asp-controller="MarketRecord" asp-action="Index" class="btn btn-sm btn-tn-primary mt-2">
+                    <i class="bi bi-arrow-right me-1"></i>View Markets
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card service-card h-100 text-center">
+            <div class="card-body p-4">
+                <div class="service-icon bg-danger-subtle text-danger">
+                    <i class="bi bi-clipboard2-check"></i>
+                </div>
+                <h5 class="fw-bold mt-3">Compliance Records</h5>
+                <p class="text-muted small">
+                    Track inspection outcomes, verify business compliance status,
+                    and manage passed or failed audit results.
+                </p>
+                <a asp-controller="Compliance" asp-action="Index" class="btn btn-sm btn-tn-primary mt-2">
+                    <i class="bi bi-arrow-right me-1"></i>View Compliance
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card service-card h-100 text-center">
+            <div class="card-body p-4">
+                <div class="service-icon bg-secondary-subtle text-secondary">
+                    <i class="bi bi-person-badge"></i>
+                </div>
+                <h5 class="fw-bold mt-3">Officer Portal</h5>
+                <p class="text-muted small">
+                    Access your officer dashboard, manage your profile, and oversee
+                    all trade operations assigned to your region.
+                </p>
+                <a asp-controller="TradeOfficer" asp-action="Profile" class="btn btn-sm btn-tn-primary mt-2">
+                    <i class="bi bi-arrow-right me-1"></i>My Profile
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

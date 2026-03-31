@@ -1,0 +1,143 @@
+@model TradeNetProject.Models.TradeOfficer
+
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+<div class="page-header">
+    <div class="breadcrumb-custom">
+        <a asp-controller="Home" asp-action="Index">Home</a>
+        <span class="separator">/</span>
+        <a asp-controller="TradeOfficer" asp-action="Dashboard">Dashboard</a>
+        <span class="separator">/</span>
+        <span>Profile</span>
+    </div>
+    <h2><i class="bi bi-person-badge me-2"></i>My Profile</h2>
+    <p>View your trade officer account details and information.</p>
+</div>
+
+<div class="row g-4">
+    <!-- Profile Card -->
+    <div class="col-lg-4">
+        <div class="card profile-card text-center h-100">
+            <div class="profile-card-header">
+                <div class="profile-avatar">
+                    <i class="bi bi-person-fill"></i>
+                </div>
+            </div>
+            <div class="card-body pt-5 mt-3">
+                <h4 class="fw-bold mb-1">@Model.FullName</h4>
+                <p class="text-muted mb-2">@Model.Designation</p>
+                <span class="badge badge-status badge-active mb-3">
+                    <i class="bi bi-check-circle-fill me-1"></i>@Model.Status
+                </span>
+                <hr />
+                <div class="d-flex justify-content-around text-center">
+                    <div>
+                        <div class="fw-bold text-primary">@Model.EmployeeCode</div>
+                        <small class="text-muted">Employee Code</small>
+                    </div>
+                    <div>
+                        <div class="fw-bold text-primary">@Model.DateOfJoining.ToString("yyyy")</div>
+                        <small class="text-muted">Year Joined</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Details Card -->
+    <div class="col-lg-8">
+        <div class="card h-100">
+            <div class="card-header bg-white py-3">
+                <h5 class="mb-0 fw-bold">
+                    <i class="bi bi-info-circle me-2 text-primary"></i>Officer Details
+                </h5>
+            </div>
+            <div class="card-body p-4">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="detail-row">
+                            <div class="detail-label">Officer ID</div>
+                            <div class="detail-value"><strong>#@Model.OfficerID</strong></div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Full Name</div>
+                            <div class="detail-value">@Model.FullName</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Designation</div>
+                            <div class="detail-value">@Model.Designation</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Department</div>
+                            <div class="detail-value">@Model.Department</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Employee Code</div>
+                            <div class="detail-value">
+                                <span class="badge bg-light text-dark border">@Model.EmployeeCode</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="detail-row">
+                            <div class="detail-label">Email</div>
+                            <div class="detail-value">
+                                <i class="bi bi-envelope me-1 text-muted"></i>@Model.Email
+                            </div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Phone</div>
+                            <div class="detail-value">
+                                <i class="bi bi-telephone me-1 text-muted"></i>@Model.Phone
+                            </div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Region</div>
+                            <div class="detail-value">
+                                <i class="bi bi-geo-alt me-1 text-muted"></i>@Model.Region
+                            </div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Date of Joining</div>
+                            <div class="detail-value">
+                                <i class="bi bi-calendar-event me-1 text-muted"></i>@Model.DateOfJoining.ToString("MMMM dd, yyyy")
+                            </div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Status</div>
+                            <div class="detail-value">
+                                <span class="badge badge-status badge-active">
+                                    <i class="bi bi-check-circle-fill me-1"></i>@Model.Status
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions Card - Full Width -->
+<div class="card mt-4">
+    <div class="card-header bg-white py-3">
+        <h5 class="mb-0 fw-bold">
+            <i class="bi bi-lightning me-2 text-primary"></i>Quick Actions
+        </h5>
+    </div>
+    <div class="card-body p-4">
+        <div class="d-flex flex-wrap gap-3">
+            <a asp-controller="TradeOfficer" asp-action="Dashboard" class="btn btn-tn-primary">
+                <i class="bi bi-speedometer2 me-1"></i> Go to Dashboard
+            </a>
+            <a asp-controller="License" asp-action="PendingLicenses" class="btn btn-outline-primary">
+                <i class="bi bi-file-earmark-check me-1"></i> Review Licenses
+            </a>
+            <a asp-controller="Transaction" asp-action="Index" class="btn btn-outline-primary">
+                <i class="bi bi-receipt me-1"></i> View Transactions
+            </a>
+        </div>
+    </div>
+</div>

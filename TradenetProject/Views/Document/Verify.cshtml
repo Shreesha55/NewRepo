@@ -1,0 +1,93 @@
+@model TradeNetProject.Models.Document
+
+@{
+    ViewData["Title"] = "Verify Document";
+}
+
+<div class="page-header">
+    <div class="breadcrumb-custom">
+        <a asp-controller="Home" asp-action="Index">Home</a>
+        <span class="separator">/</span>
+        <a asp-controller="Document" asp-action="Index">Documents</a>
+        <span class="separator">/</span>
+        <span>Verify #@Model.DocumentID</span>
+    </div>
+    <h2><i class="bi bi-file-earmark-medical me-2"></i>Verify Document</h2>
+    <p>Review the submitted document details and approve or reject for compliance.</p>
+</div>
+
+<div class="row">
+    <div class="col-lg-7">
+        <div class="card mb-4">
+            <div class="card-header bg-white py-3">
+                <h5 class="mb-0 fw-bold">
+                    <i class="bi bi-info-circle me-2 text-primary"></i>Document Details
+                </h5>
+            </div>
+            <div class="card-body p-4">
+                <div class="detail-row">
+                    <div class="detail-label">Document ID</div>
+                    <div class="detail-value"><strong>#@Model.DocumentID</strong></div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Business</div>
+                    <div class="detail-value">
+                        <i class="bi bi-building me-1 text-muted"></i>
+                        @Model.BusinessName
+                    </div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Document Type</div>
+                    <div class="detail-value">
+                        <i class="bi bi-file-earmark-text me-1 text-muted"></i>
+                        @Model.DocumentType
+                    </div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Submitted Date</div>
+                    <div class="detail-value">
+                        <i class="bi bi-calendar-event me-1 text-muted"></i>
+                        @Model.SubmittedDate
+                    </div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Current Status</div>
+                    <div class="detail-value">
+                        <span class="badge badge-status badge-@Model.Status.ToLower()">@Model.Status</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-5">
+        <div class="card mb-4">
+            <div class="card-header bg-white py-3">
+                <h5 class="mb-0 fw-bold">
+                    <i class="bi bi-clipboard-check me-2 text-primary"></i>Verification Decision
+                </h5>
+            </div>
+            <div class="card-body p-4 text-center">
+                <p class="text-muted mb-4">Choose an action for this document submission.</p>
+
+                <div class="d-grid gap-3">
+                    <form method="post" asp-controller="Document" asp-action="Approve" asp-route-id="@Model.DocumentID">
+                        <button type="submit" class="btn btn-approve w-100 py-2">
+                            <i class="bi bi-check-circle me-2"></i> Verify Document
+                        </button>
+                    </form>
+
+                    <form method="post" asp-controller="Document" asp-action="Reject" asp-route-id="@Model.DocumentID">
+                        <button type="submit" class="btn btn-reject w-100 py-2">
+                            <i class="bi bi-x-circle me-2"></i> Reject Document
+                        </button>
+                    </form>
+                </div>
+
+                <a asp-controller="Document" asp-action="Index" class="btn btn-outline-secondary mt-3">
+                    <i class="bi bi-arrow-left me-1"></i> Back to Documents
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

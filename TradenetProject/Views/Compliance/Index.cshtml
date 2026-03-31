@@ -1,0 +1,129 @@
+@model List<TradeNetProject.Models.ComplianceRecord>
+
+@{
+    ViewData["Title"] = "Compliance Records";
+}
+
+<div class="page-header">
+    <div class="breadcrumb-custom">
+        <a asp-controller="Home" asp-action="Index">Home</a>
+        <span class="separator">/</span>
+        <span>Compliance Records</span>
+    </div>
+    <h2><i class="bi bi-clipboard2-check me-2"></i>Compliance Records</h2>
+    <p>Track inspection outcomes and compliance status for all registered businesses.</p>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card stat-card">
+            <div class="stat-icon text-primary"><i class="bi bi-clipboard2-data"></i></div>
+            <div class="stat-value">@Model.Count</div>
+            <div class="stat-label">Total Inspections</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card stat-card">
+            <div class="stat-icon text-success"><i class="bi bi-check-circle"></i></div>
+            <div class="stat-value">@Model.Count(r => r.Result == "Passed")</div>
+            <div class="stat-label">Passed</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card stat-card">
+            <div class="stat-icon text-danger"><i class="bi bi-x-circle"></i></div>
+            <div class="stat-value">@Model.Count(r => r.Result == "Failed")</div>
+            <div class="stat-label">Failed</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card stat-card">
+            <div class="stat-icon text-warning"><i class="bi bi-hourglass-split"></i></div>
+            <div class="stat-value">@Model.Count(r => r.Result == "Pending")</div>
+            <div class="stat-label">Pending Review</div>
+        </div>
+    </div>
+</div>
+
+<div class="table-container">
+    <div class="p-3 d-flex justify-content-between align-items-center border-bottom">
+        <h5 class="mb-0 fw-bold"><i class="bi bi-table me-2"></i>All Compliance Records</h5>
+    </div>
+    <table class="table table-striped table-hover mb-0">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Business Name</th>
+                <th scope="col">Inspection Type</th>
+                <th scope="col">Inspected Date</th>
+                <th scope="col">Inspected By</th>
+                <th scope="col">Result</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var r in Model)
+            {
+                <tr>
+                    <td><strong>@r.ComplianceID</strong></td>
+                    <td>
+                        <i class="bi bi-building me-1 text-muted"></i>
+                        @r.BusinessName
+                    </td>
+                    <td>
+                        <i class="bi bi-clipboard2-check me-1 text-muted"></i>
+                        @r.InspectionType
+                    </td>
+                    <td>
+                        <i class="bi bi-calendar-event me-1 text-muted"></i>
+                        @r.InspectedDate
+                    </td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(r.InspectedBy))
+                        {
+                            <i class="bi bi-person-check me-1 text-muted"></i>
+                            @r.InspectedBy
+                        }
+                        else
+                        {
+                            <span class="text-muted fst-italic">Awaiting inspection</span>
+                        }
+                    </td>
+                    <td>
+                        <span class="badge badge-status badge-@r.Result.ToLower()">
+                            @if (r.Result == "Passed")
+                            {
+                                <i class="bi bi-check-circle-fill me-1"></i>
+                            }
+                            else if (r.Result == "Failed")
+                            {
+                                <i class="bi bi-x-circle-fill me-1"></i>
+                            }
+                            else
+                            {
+                                <i class="bi bi-clock-fill me-1"></i>
+                            }
+                            @r.Result
+                        </span>
+                    </td>
+                    <td>
+                        @if (r.Result == "Pending")
+                        {
+                            <a asp-controller="Compliance" asp-action="Review" asp-route-id="@r.ComplianceID"
+                               class="btn btn-sm btn-tn-primary">
+                                <i class="bi bi-eye me-1"></i> Review
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Compliance" asp-action="Review" asp-route-id="@r.ComplianceID"
+                               class="btn btn-sm btn-outline-secondary">
+                                <i class="bi bi-eye me-1"></i> View
+                            </a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,67 @@
+@model TradeNetProject.Models.ComplianceRecord
+
+@{
+    ViewData["Title"] = "Edit Compliance Record";
+}
+
+<div class="page-header">
+    <div class="breadcrumb-custom">
+        <a asp-controller="Home" asp-action="Index">Home</a>
+        <span class="separator">/</span>
+        <a asp-controller="Compliance" asp-action="Index">Compliance</a>
+        <span class="separator">/</span>
+        <span>Edit #@Model.ComplianceID</span>
+    </div>
+    <h2><i class="bi bi-pencil-square me-2"></i>Edit Compliance Record</h2>
+    <p>Modify compliance inspection details.</p>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header bg-white py-3">
+                <h5 class="mb-0 fw-bold"><i class="bi bi-clipboard2-check me-2 text-primary"></i>Inspection Details</h5>
+            </div>
+            <div class="card-body p-4">
+                <form method="post" asp-controller="Compliance" asp-action="Edit">
+                    <input type="hidden" name="ComplianceID" value="@Model.ComplianceID" />
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Business Name</label>
+                        <input type="text" name="BusinessName" class="form-control" value="@Model.BusinessName" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Inspection Type</label>
+                        <select name="InspectionType" class="form-select" required>
+                            <option value="Annual Audit" selected="@(Model.InspectionType == "Annual Audit")">Annual Audit</option>
+                            <option value="Safety Inspection" selected="@(Model.InspectionType == "Safety Inspection")">Safety Inspection</option>
+                            <option value="License Compliance" selected="@(Model.InspectionType == "License Compliance")">License Compliance</option>
+                            <option value="Tax Compliance" selected="@(Model.InspectionType == "Tax Compliance")">Tax Compliance</option>
+                            <option value="Environmental Check" selected="@(Model.InspectionType == "Environmental Check")">Environmental Check</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Inspection Date</label>
+                        <input type="text" name="InspectedDate" class="form-control" value="@Model.InspectedDate" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Remarks</label>
+                        <textarea name="Remarks" class="form-control" rows="3">@Model.Remarks</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Result</label>
+                        <select name="Result" class="form-select">
+                            <option value="Pending" selected="@(Model.Result == "Pending")">Pending</option>
+                            <option value="Passed" selected="@(Model.Result == "Passed")">Passed</option>
+                            <option value="Failed" selected="@(Model.Result == "Failed")">Failed</option>
+                        </select>
+                    </div>
+                    <input type="hidden" name="InspectedBy" value="@Model.InspectedBy" />
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-tn-primary"><i class="bi bi-check-circle me-1"></i> Save Changes</button>
+                        <a asp-controller="Compliance" asp-action="Index" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i> Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

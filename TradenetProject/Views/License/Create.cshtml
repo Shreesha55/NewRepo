@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "Add License";
+}
+
+<div class="page-header">
+    <div class="breadcrumb-custom">
+        <a asp-controller="Home" asp-action="Index">Home</a>
+        <span class="separator">/</span>
+        <a asp-controller="License" asp-action="PendingLicenses">Licenses</a>
+        <span class="separator">/</span>
+        <span>Create</span>
+    </div>
+    <h2><i class="bi bi-plus-circle me-2"></i>Add New License</h2>
+    <p>Submit a new trade license application.</p>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header bg-white py-3">
+                <h5 class="mb-0 fw-bold"><i class="bi bi-file-earmark-check me-2 text-primary"></i>License Details</h5>
+            </div>
+            <div class="card-body p-4">
+                <form method="post" asp-controller="License" asp-action="Create">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Business Name</label>
+                        <input type="text" name="BusinessName" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">License Type</label>
+                        <select name="Type" class="form-select" required>
+                            <option value="">-- Select Type --</option>
+                            <option value="Import">Import</option>
+                            <option value="Export">Export</option>
+                        </select>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-tn-primary"><i class="bi bi-check-circle me-1"></i> Submit</button>
+                        <a asp-controller="License" asp-action="PendingLicenses" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i> Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

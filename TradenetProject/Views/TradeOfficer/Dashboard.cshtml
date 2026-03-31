@@ -1,0 +1,186 @@
+﻿@model TradeNetProject.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="page-header">
+    <div class="breadcrumb-custom">
+        <a asp-controller="Home" asp-action="Index">Home</a>
+        <span class="separator">/</span>
+        <span>Dashboard</span>
+    </div>
+    <h2><i class="bi bi-speedometer2 me-2"></i>Trade Officer Dashboard</h2>
+    <p>Welcome back, @Model.OfficerName. Here's your operations overview.</p>
+</div>
+
+<!-- Overall + Per-Module Progress -->
+<div class="row g-3 mb-4">
+    <div class="col-lg-4 col-md-6">
+        <div class="card overall-progress-card h-100">
+            <div class="progress-title">Overall Completion</div>
+            <div class="progress-percent">@Model.OverallPercent%</div>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: @Model.OverallPercent%"
+                     aria-valuenow="@Model.OverallPercent" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8 col-md-6">
+        <div class="row g-3 h-100">
+            <div class="col-6 col-xl-4">
+                <div class="card progress-card h-100">
+                    <div class="progress-title"><i class="bi bi-file-earmark-check me-1 text-primary"></i>Licenses</div>
+                    <div class="progress-percent text-primary">@Model.LicensePercent%</div>
+                    <div class="progress">
+                        <div class="progress-bar bg-primary" style="width: @Model.LicensePercent%"></div>
+                    </div>
+                    <small class="text-muted mt-1">@Model.ApprovedLicenses / @Model.TotalLicenses approved</small>
+                </div>
+            </div>
+            <div class="col-6 col-xl-4">
+                <div class="card progress-card h-100">
+                    <div class="progress-title"><i class="bi bi-receipt me-1" style="color:var(--tn-gold)"></i>Transactions</div>
+                    <div class="progress-percent" style="color:var(--tn-gold)">@Model.TransactionPercent%</div>
+                    <div class="progress">
+                        <div class="progress-bar" style="background-color:var(--tn-gold);width:@Model.TransactionPercent%"></div>
+                    </div>
+                    <small class="text-muted mt-1">@Model.CompletedTransactions / @Model.TotalTransactions completed</small>
+                </div>
+            </div>
+            <div class="col-6 col-xl-4">
+                <div class="card progress-card h-100">
+                    <div class="progress-title"><i class="bi bi-file-earmark-medical me-1 text-success"></i>Documents</div>
+                    <div class="progress-percent text-success">@Model.DocumentPercent%</div>
+                    <div class="progress">
+                        <div class="progress-bar bg-success" style="width: @Model.DocumentPercent%"></div>
+                    </div>
+                    <small class="text-muted mt-1">@Model.VerifiedDocuments / @Model.TotalDocuments verified</small>
+                </div>
+            </div>
+            <div class="col-6 col-xl-6">
+                <div class="card progress-card h-100">
+                    <div class="progress-title"><i class="bi bi-shop me-1" style="color:#8b5cf6"></i>Markets</div>
+                    <div class="progress-percent" style="color:#8b5cf6">@Model.MarketPercent%</div>
+                    <div class="progress">
+                        <div class="progress-bar" style="background-color:#8b5cf6;width:@Model.MarketPercent%"></div>
+                    </div>
+                    <small class="text-muted mt-1">@Model.ActiveMarkets / @Model.TotalMarkets active</small>
+                </div>
+            </div>
+            <div class="col-6 col-xl-6">
+                <div class="card progress-card h-100">
+                    <div class="progress-title"><i class="bi bi-clipboard2-check me-1 text-danger"></i>Compliance</div>
+                    <div class="progress-percent text-danger">@Model.CompliancePercent%</div>
+                    <div class="progress">
+                        <div class="progress-bar bg-danger" style="width: @Model.CompliancePercent%"></div>
+                    </div>
+                    <small class="text-muted mt-1">@Model.PassedCompliance / @Model.TotalCompliance passed</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Access Cards -->
+<div class="row g-3">
+    <div class="col-md-6 col-xl-4">
+        <div class="card dash-card card-licenses h-100">
+            <div class="card-body p-3">
+                <div class="d-flex align-items-center mb-2">
+                    <div class="rounded-circle d-flex align-items-center justify-content-center me-3"
+                         style="width:46px;height:46px;background:rgba(19,103,138,0.1);flex-shrink:0;">
+                        <i class="bi bi-file-earmark-check" style="font-size:1.25rem;color:var(--tn-accent);"></i>
+                    </div>
+                    <div>
+                        <h6 class="mb-0 fw-bold">License Management</h6>
+                        <small class="text-muted">Review &amp; process applications</small>
+                    </div>
+                </div>
+                <a asp-controller="License" asp-action="PendingLicenses" class="btn btn-sm btn-tn-primary">
+                    <i class="bi bi-arrow-right-circle me-1"></i> View Licenses
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-xl-4">
+        <div class="card dash-card card-transactions h-100">
+            <div class="card-body p-3">
+                <div class="d-flex align-items-center mb-2">
+                    <div class="rounded-circle d-flex align-items-center justify-content-center me-3"
+                         style="width:46px;height:46px;background:rgba(196,155,50,0.1);flex-shrink:0;">
+                        <i class="bi bi-receipt" style="font-size:1.25rem;color:var(--tn-gold);"></i>
+                    </div>
+                    <div>
+                        <h6 class="mb-0 fw-bold">Transaction Records</h6>
+                        <small class="text-muted">Monitor trade transactions</small>
+                    </div>
+                </div>
+                <a asp-controller="Transaction" asp-action="Index" class="btn btn-sm btn-tn-primary">
+                    <i class="bi bi-arrow-right-circle me-1"></i> View Transactions
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-xl-4">
+        <div class="card dash-card card-documents h-100">
+            <div class="card-body p-3">
+                <div class="d-flex align-items-center mb-2">
+                    <div class="rounded-circle d-flex align-items-center justify-content-center me-3"
+                         style="width:46px;height:46px;background:rgba(5,150,105,0.1);flex-shrink:0;">
+                        <i class="bi bi-file-earmark-medical" style="font-size:1.25rem;color:#059669;"></i>
+                    </div>
+                    <div>
+                        <h6 class="mb-0 fw-bold">Document Verification</h6>
+                        <small class="text-muted">Verify business documents</small>
+                    </div>
+                </div>
+                <a asp-controller="Document" asp-action="Index" class="btn btn-sm btn-tn-primary">
+                    <i class="bi bi-arrow-right-circle me-1"></i> Review Documents
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-xl-4">
+        <div class="card dash-card card-markets h-100">
+            <div class="card-body p-3">
+                <div class="d-flex align-items-center mb-2">
+                    <div class="rounded-circle d-flex align-items-center justify-content-center me-3"
+                         style="width:46px;height:46px;background:rgba(139,92,246,0.1);flex-shrink:0;">
+                        <i class="bi bi-shop" style="font-size:1.25rem;color:#8b5cf6;"></i>
+                    </div>
+                    <div>
+                        <h6 class="mb-0 fw-bold">Market Records</h6>
+                        <small class="text-muted">Browse registered markets</small>
+                    </div>
+                </div>
+                <a asp-controller="MarketRecord" asp-action="Index" class="btn btn-sm btn-tn-primary">
+                    <i class="bi bi-arrow-right-circle me-1"></i> View Markets
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-xl-4">
+        <div class="card dash-card card-compliance h-100">
+            <div class="card-body p-3">
+                <div class="d-flex align-items-center mb-2">
+                    <div class="rounded-circle d-flex align-items-center justify-content-center me-3"
+                         style="width:46px;height:46px;background:rgba(220,38,38,0.1);flex-shrink:0;">
+                        <i class="bi bi-clipboard2-check" style="font-size:1.25rem;color:#dc2626;"></i>
+                    </div>
+                    <div>
+                        <h6 class="mb-0 fw-bold">Compliance Records</h6>
+                        <small class="text-muted">Track inspection outcomes</small>
+                    </div>
+                </div>
+                <a asp-controller="Compliance" asp-action="Index" class="btn btn-sm btn-tn-primary">
+                    <i class="bi bi-arrow-right-circle me-1"></i> View Compliance
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

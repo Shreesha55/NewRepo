@@ -1,0 +1,134 @@
+@model TradeNetProject.Models.ComplianceRecord
+
+@{
+    ViewData["Title"] = "Review Compliance";
+}
+
+<div class="page-header">
+    <div class="breadcrumb-custom">
+        <a asp-controller="Home" asp-action="Index">Home</a>
+        <span class="separator">/</span>
+        <a asp-controller="Compliance" asp-action="Index">Compliance Records</a>
+        <span class="separator">/</span>
+        <span>Review #@Model.ComplianceID</span>
+    </div>
+    <h2><i class="bi bi-clipboard2-check me-2"></i>Review Compliance Record</h2>
+    <p>Examine the inspection details and record the compliance outcome.</p>
+</div>
+
+<div class="row">
+    <div class="col-lg-7">
+        <div class="card mb-4">
+            <div class="card-header bg-white py-3">
+                <h5 class="mb-0 fw-bold">
+                    <i class="bi bi-info-circle me-2 text-primary"></i>Inspection Details
+                </h5>
+            </div>
+            <div class="card-body p-4">
+                <div class="detail-row">
+                    <div class="detail-label">Compliance ID</div>
+                    <div class="detail-value"><strong>#@Model.ComplianceID</strong></div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Business</div>
+                    <div class="detail-value">
+                        <i class="bi bi-building me-1 text-muted"></i>
+                        @Model.BusinessName
+                    </div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Inspection Type</div>
+                    <div class="detail-value">
+                        <i class="bi bi-clipboard2-check me-1 text-muted"></i>
+                        @Model.InspectionType
+                    </div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Inspected Date</div>
+                    <div class="detail-value">
+                        <i class="bi bi-calendar-event me-1 text-muted"></i>
+                        @Model.InspectedDate
+                    </div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Inspected By</div>
+                    <div class="detail-value">
+                        @if (!string.IsNullOrEmpty(Model.InspectedBy))
+                        {
+                            <i class="bi bi-person-check me-1 text-muted"></i>
+                            @Model.InspectedBy
+                        }
+                        else
+                        {
+                            <span class="text-muted fst-italic">Not yet assigned</span>
+                        }
+                    </div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Current Result</div>
+                    <div class="detail-value">
+                        <span class="badge badge-status badge-@Model.Result.ToLower()">@Model.Result</span>
+                    </div>
+                </div>
+                @if (!string.IsNullOrEmpty(Model.Remarks))
+                {
+                    <div class="detail-row">
+                        <div class="detail-label">Remarks</div>
+                        <div class="detail-value">@Model.Remarks</div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-5">
+        <div class="card mb-4">
+            <div class="card-header bg-white py-3">
+                <h5 class="mb-0 fw-bold">
+                    <i class="bi bi-clipboard-check me-2 text-primary"></i>Compliance Decision
+                </h5>
+            </div>
+            <div class="card-body p-4 text-center">
+                @if (Model.Result == "Pending")
+                {
+                    <p class="text-muted mb-4">Record whether this business passed or failed the compliance inspection.</p>
+
+                    <div class="d-grid gap-3">
+                        <form method="post" asp-controller="Compliance" asp-action="MarkPassed" asp-route-id="@Model.ComplianceID">
+                            <button type="submit" class="btn btn-approve w-100 py-2">
+                                <i class="bi bi-check-circle me-2"></i> Mark as Passed
+                            </button>
+                        </form>
+
+                        <form method="post" asp-controller="Compliance" asp-action="MarkFailed" asp-route-id="@Model.ComplianceID">
+                            <button type="submit" class="btn btn-reject w-100 py-2">
+                                <i class="bi bi-x-circle me-2"></i> Mark as Failed
+                            </button>
+                        </form>
+                    </div>
+                }
+                else
+                {
+                    <div class="mb-3">
+                        <span class="badge badge-status badge-@Model.Result.ToLower()" style="font-size:1rem;padding:0.6em 1.2em;">
+                            @if (Model.Result == "Passed")
+                            {
+                                <i class="bi bi-check-circle-fill me-1"></i>
+                            }
+                            else
+                            {
+                                <i class="bi bi-x-circle-fill me-1"></i>
+                            }
+                            Compliance @Model.Result
+                        </span>
+                    </div>
+                    <p class="text-muted small">This inspection has already been completed.</p>
+                }
+
+                <a asp-controller="Compliance" asp-action="Index" class="btn btn-outline-secondary mt-3">
+                    <i class="bi bi-arrow-left me-1"></i> Back to Records
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

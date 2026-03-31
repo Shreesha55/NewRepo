@@ -1,0 +1,69 @@
+@page
+@model TradenetProject.Pages.About.IndexModel
+
+@{
+    ViewData["Title"] = "About TradeNet";
+}
+
+<div class="page-header">
+    <div class="breadcrumb-custom">
+        <a asp-controller="Home" asp-action="Index">Home</a>
+        <span class="separator">/</span>
+        <span>About</span>
+    </div>
+    <h2><i class="bi bi-info-circle me-2"></i>About TradeNet Portal</h2>
+    <p>Learn about the platform, its mission, and the technology powering it.</p>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-white py-3">
+                <h5 class="mb-0 fw-bold">
+                    <i class="bi bi-globe-americas me-2 text-primary"></i>Our Mission
+                </h5>
+            </div>
+            <div class="card-body p-4">
+                <p>
+                    TradeNet Portal is the official government platform for managing trade licensing,
+                    compliance inspections, document verification, market records, and financial
+                    transactions across all registered businesses.
+                </p>
+                <p class="mb-0">
+                    The system is built to ensure transparency, efficiency, and accountability in
+                    trade operations and regulatory compliance.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header bg-white py-3">
+                <h5 class="mb-0 fw-bold">
+                    <i class="bi bi-gear me-2 text-primary"></i>Platform Info
+                </h5>
+            </div>
+            <div class="card-body p-4">
+                <div class="detail-row">
+                    <div class="detail-label">Version</div>
+                    <div class="detail-value">@Model.Version</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Framework</div>
+                    <div class="detail-value">@Model.Framework</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Architecture</div>
+                    <div class="detail-value">@Model.Architecture</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Page Type</div>
+                    <div class="detail-value">
+                        <span class="badge bg-primary">Razor Page</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
