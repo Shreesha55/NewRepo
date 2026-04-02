@@ -1,0 +1,503 @@
+{
+  "info": {
+    "_postman_id": "tradenet-api-collection",
+    "name": "TradeNet Portal API",
+    "description": "API collection for testing TradeNet Portal endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Compliance",
+      "item": [
+        {
+          "name": "Get All Compliance Records",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:5001/api/compliance",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "compliance"]
+            }
+          }
+        },
+        {
+          "name": "Get Compliance Record by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:5001/api/compliance/1",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "compliance", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create Compliance Record",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"businessName\": \"ABC Trading\",\n  \"inspectionType\": \"Safety\",\n  \"inspectedDate\": \"2025-01-15\",\n  \"inspectedBy\": \"\",\n  \"remarks\": \"\",\n  \"result\": \"\"\n}"
+            },
+            "url": {
+              "raw": "https://localhost:5001/api/compliance",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "compliance"]
+            }
+          }
+        },
+        {
+          "name": "Update Compliance Record",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"businessName\": \"ABC Trading\",\n  \"inspectionType\": \"Safety\",\n  \"inspectedDate\": \"2025-01-15\",\n  \"inspectedBy\": \"John Doe\",\n  \"remarks\": \"Passed inspection\",\n  \"result\": \"Passed\"\n}"
+            },
+            "url": {
+              "raw": "https://localhost:5001/api/compliance/1",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "compliance", "1"]
+            }
+          }
+        },
+        {
+          "name": "Mark Compliance as Passed",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:5001/api/compliance/1/passed",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "compliance", "1", "passed"]
+            }
+          }
+        },
+        {
+          "name": "Mark Compliance as Failed",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:5001/api/compliance/1/failed",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "compliance", "1", "failed"]
+            }
+          }
+        },
+        {
+          "name": "Delete Compliance Record",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:5001/api/compliance/1",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "compliance", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "License",
+      "item": [
+        {
+          "name": "Get All Licenses",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:5001/api/license",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "license"]
+            }
+          }
+        },
+        {
+          "name": "Get License by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:5001/api/license/1",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "license", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create License",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"businessName\": \"XYZ Business\",\n  \"type\": \"Trading\",\n  \"status\": \"Active\"\n}"
+            },
+            "url": {
+              "raw": "https://localhost:5001/api/license",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "license"]
+            }
+          }
+        },
+        {
+          "name": "Update License",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"businessName\": \"XYZ Business\",\n  \"type\": \"Trading\",\n  \"status\": \"Expired\"\n}"
+            },
+            "url": {
+              "raw": "https://localhost:5001/api/license/1",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "license", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete License",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:5001/api/license/1",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "license", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Transaction",
+      "item": [
+        {
+          "name": "Get All Transactions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:5001/api/transaction",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "transaction"]
+            }
+          }
+        },
+        {
+          "name": "Get Transaction by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:5001/api/transaction/1",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "transaction", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create Transaction",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"businessName\": \"ABC Trading\",\n  \"type\": \"Import\",\n  \"amount\": 5000,\n  \"status\": \"Pending\"\n}"
+            },
+            "url": {
+              "raw": "https://localhost:5001/api/transaction",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "transaction"]
+            }
+          }
+        },
+        {
+          "name": "Update Transaction",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"businessName\": \"ABC Trading\",\n  \"type\": \"Import\",\n  \"amount\": 5000,\n  \"status\": \"Completed\"\n}"
+            },
+            "url": {
+              "raw": "https://localhost:5001/api/transaction/1",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "transaction", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Transaction",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:5001/api/transaction/1",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "transaction", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Market Record",
+      "item": [
+        {
+          "name": "Get All Market Records",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:5001/api/marketrecord",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "marketrecord"]
+            }
+          }
+        },
+        {
+          "name": "Get Market Record by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:5001/api/marketrecord/1",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "marketrecord", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create Market Record",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"marketName\": \"Central Market\",\n  \"location\": \"Downtown\",\n  \"totalVendors\": 150,\n  \"category\": \"General\",\n  \"revenue\": 50000,\n  \"status\": \"Active\"\n}"
+            },
+            "url": {
+              "raw": "https://localhost:5001/api/marketrecord",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "marketrecord"]
+            }
+          }
+        },
+        {
+          "name": "Update Market Record",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"marketName\": \"Central Market\",\n  \"location\": \"Downtown\",\n  \"totalVendors\": 200,\n  \"category\": \"General\",\n  \"revenue\": 60000,\n  \"status\": \"Active\"\n}"
+            },
+            "url": {
+              "raw": "https://localhost:5001/api/marketrecord/1",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "marketrecord", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Market Record",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:5001/api/marketrecord/1",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "marketrecord", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Document",
+      "item": [
+        {
+          "name": "Get All Documents",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:5001/api/document",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "document"]
+            }
+          }
+        },
+        {
+          "name": "Get Document by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:5001/api/document/1",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "document", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create Document",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"businessName\": \"ABC Trading\",\n  \"documentType\": \"License\",\n  \"submittedDate\": \"2025-01-15\",\n  \"verifiedBy\": \"\",\n  \"status\": \"Pending\"\n}"
+            },
+            "url": {
+              "raw": "https://localhost:5001/api/document",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "document"]
+            }
+          }
+        },
+        {
+          "name": "Update Document",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"businessName\": \"ABC Trading\",\n  \"documentType\": \"License\",\n  \"submittedDate\": \"2025-01-15\",\n  \"verifiedBy\": \"Officer John\",\n  \"status\": \"Verified\"\n}"
+            },
+            "url": {
+              "raw": "https://localhost:5001/api/document/1",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "document", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Document",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:5001/api/document/1",
+              "protocol": "https",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "document", "1"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

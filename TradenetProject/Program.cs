@@ -11,7 +11,11 @@ builder.Services.AddRazorPages();
 
 // Register DbContext with SQL Server
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
+        sqlServerOptionsAction: sqlOptions =>
+        {
+            sqlOptions.EnableRetryOnFailure(5);
+        }));
 
 // Register Repositories (Scoped - one per request, same as DbContext)
 builder.Services.AddScoped<ITradeOfficerRepository, TradeOfficerRepository>();
