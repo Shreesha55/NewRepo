@@ -1,4 +1,4 @@
-/* ===== BASE ===== */
+
 :root {
   --tn-primary: #0b2545;
   --tn-primary-light: #134074;
@@ -40,7 +40,7 @@ body {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
-/* ===== SIDEBAR ===== */
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -138,7 +138,7 @@ body {
   flex-shrink: 0;
 }
 
-/* ===== MAIN WRAPPER ===== */
+
 .main-wrapper {
   margin-left: var(--sidebar-width);
   min-height: 100vh;
@@ -153,7 +153,7 @@ body {
   width: 100%;
 }
 
-/* ===== TOP HEADER BAR ===== */
+
 .top-header {
   height: var(--topbar-height);
   background: #fff;
@@ -195,7 +195,7 @@ body {
   align-items: center;
 }
 
-/* Profile Trigger */
+
 .profile-trigger {
   display: flex;
   align-items: center;
@@ -259,13 +259,13 @@ body {
   color: var(--tn-accent);
 }
 
-/* ===== MAIN CONTENT ===== */
+
 .main-content {
   flex: 1;
   padding: 1.5rem;
 }
 
-/* ===== PAGE HEADER ===== */
+
 .page-header {
   background: linear-gradient(135deg, var(--tn-primary) 0%, var(--tn-primary-light) 100%);
   color: #fff;
@@ -282,7 +282,7 @@ body {
 .breadcrumb-custom a:hover { color: #fff; }
 .breadcrumb-custom .separator { color: rgba(255,255,255,0.5); margin: 0 0.4rem; }
 
-/* ===== CARDS ===== */
+
 .card {
   border: none;
   border-radius: 10px;
@@ -310,7 +310,7 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* ===== TABLES ===== */
+
 .table-container {
   background: var(--tn-card-bg);
   border-radius: 10px;
@@ -342,7 +342,7 @@ body {
   background-color: rgba(19,103,138,0.06);
 }
 
-/* ===== BADGES ===== */
+
 .badge-status {
   font-size: 0.75rem; font-weight: 600; padding: 0.35em 0.8em; border-radius: 50px;
 }
@@ -363,7 +363,7 @@ body {
 .badge-retail { background-color: #f3e8ff; color: #6b21a8; }
 .badge-active { background-color: #d1fae5; color: #065f46; }
 
-/* ===== DASHBOARD CARDS ===== */
+
 .dash-card {
   border-left: 4px solid transparent;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -375,7 +375,7 @@ body {
 .dash-card.card-markets { border-left-color: #8b5cf6; }
 .dash-card.card-compliance { border-left-color: #dc2626; }
 
-/* ===== DASHBOARD PROGRESS ===== */
+
 .progress-card {
   padding: 1rem 1.25rem;
 }
@@ -425,7 +425,7 @@ body {
   background-color: var(--tn-gold);
 }
 
-/* ===== BUTTONS ===== */
+
 .btn-tn-primary {
   background: linear-gradient(135deg, var(--tn-primary-light), var(--tn-accent));
   color: #fff; border: none; font-weight: 600;
@@ -446,7 +446,7 @@ body {
 }
 .btn-reject:hover { background-color: #b91c1c; color: #fff; }
 
-/* ===== REVIEW DETAILS ===== */
+
 .detail-row { display: flex; padding: 0.65rem 0; border-bottom: 1px solid #eef0f3; }
 .detail-row:last-child { border-bottom: none; }
 .detail-label {
@@ -455,7 +455,7 @@ body {
 }
 .detail-value { font-size: 0.95rem; }
 
-/* ===== FOOTER ===== */
+
 .site-footer {
   background: #fff;
   border-top: 1px solid #e8ecf1;
@@ -468,10 +468,10 @@ body {
 .footer-bottom-link { color: var(--tn-text-muted); text-decoration: none; }
 .footer-bottom-link:hover { color: var(--tn-accent); }
 
-/* ===== AMOUNT ===== */
+
 .amount-value { font-weight: 600; font-family: 'Consolas', 'Courier New', monospace; }
 
-/* ===== PROFILE PAGE ===== */
+
 .profile-card { overflow: visible; position: relative; }
 
 .profile-card-header {
@@ -488,7 +488,7 @@ body {
   box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
-/* ===== HOME PAGE HERO ===== */
+
 .hero-section {
   background: linear-gradient(135deg, var(--tn-primary) 0%, var(--tn-primary-light) 50%, var(--tn-accent) 100%);
   color: #fff; border-radius: 10px; padding: 2.5rem 1.5rem;
@@ -516,7 +516,7 @@ body {
 }
 .btn-hero-outline:hover { background: rgba(255,255,255,0.15); border-color: #fff; color: #fff; }
 
-/* ===== HOME PAGE SECTIONS ===== */
+
 .section-heading {
   font-weight: 700; font-size: 1.15rem; color: var(--tn-primary);
   position: relative; display: inline-block;
@@ -533,7 +533,7 @@ body {
   width: 56px; height: 56px; border-radius: 14px; font-size: 1.5rem;
 }
 
-/* ===== RESPONSIVE ===== */
+
 @media (max-width: 991.98px) {
   .sidebar { transform: translateX(calc(-1 * var(--sidebar-width))); }
   .sidebar.collapsed { transform: translateX(0); }

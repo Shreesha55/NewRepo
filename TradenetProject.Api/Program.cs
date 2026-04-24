@@ -1,61 +1,46 @@
 using Microsoft.EntityFrameworkCore;
 using TradeNetProject.Data;
-using TradeNetProject.Repositories;
 using TradeNetProject.Repositories.Interfaces;
+using TradeNetProject.Repositories;
 using TradeNetProject.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-builder.Services.AddControllersWithViews();
-builder.Services.AddRazorPages();
-
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
-        sqlServerOptionsAction: sqlOptions =>
-        {
-            sqlOptions.EnableRetryOnFailure(5);
-        }));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ProductDbConnection")));
 
-
-builder.Services.AddScoped<ITradeOfficerRepository, TradeOfficerRepository>();
+// Register repositories and services from the API project
+builder.Services.AddScoped<IComplianceRepository, ComplianceRepository>();
 builder.Services.AddScoped<ILicenseRepository, LicenseRepository>();
 builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();
 builder.Services.AddScoped<IMarketRecordRepository, MarketRecordRepository>();
-builder.Services.AddScoped<IComplianceRepository, ComplianceRepository>();
+builder.Services.AddScoped<ITradeOfficerRepository, TradeOfficerRepository>();
 
-
-builder.Services.AddScoped<ITradeOfficerService, TradeOfficerService>();
+builder.Services.AddScoped<IComplianceService, ComplianceService>();
 builder.Services.AddScoped<ILicenseService, LicenseService>();
 builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddScoped<IDocumentService, DocumentService>();
 builder.Services.AddScoped<IMarketRecordService, MarketRecordService>();
-builder.Services.AddScoped<IComplianceService, ComplianceService>();
+builder.Services.AddScoped<ITradeOfficerService, TradeOfficerService>();
 
 var app = builder.Build();
 
-
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
-  
-    app.UseExceptionHandler("/Home/Error");
-  
-    app.UseHsts();
+    app.UseDeveloperExceptionPage();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
-app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapStaticAssets();
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=TradeOfficer}/{action=Dashboard}/{id?}");
-
-app.MapRazorPages();
+app.MapControllers();
 
 app.Run();

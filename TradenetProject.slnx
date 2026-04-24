@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="TradenetProject.Api/TradenetProject.Api.csproj" Id="2aa5ea2f-254f-40d8-ab72-944a75e5312f" />
   <Project Path="TradenetProject/TradenetProject.csproj" />
 </Solution>

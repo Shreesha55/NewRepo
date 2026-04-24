@@ -24,6 +24,8 @@ namespace TradeNetProject.Controllers
             var license = _licenseService.GetLicenseById(id);
             return View(license);
         }
+        // URL would look like: /Review/d27b9492-4f32-4f0f-8763-888484
+        
 
         public IActionResult Create()
         {
